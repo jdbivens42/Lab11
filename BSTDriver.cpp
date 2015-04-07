@@ -41,20 +41,21 @@ int main()
       bst->insert(cd);
    }
    delete iter;
-
-   
+   BinaryTreeIterator<CD>* biter = bst->iterator();
+   while (biter->hasNext())
+   {
+	   CD* cd = biter->next();
+	   cd->displayCD();
+   }
    //DO THIS
    //test your tree sort method
    CD** unsorted_cds = cds->toArray();
-   CD** sorted_cds = 
+   CD** sorted_cds = BinarySearchTree<CD>::treeSort(unsorted_cds, num_items, &CD::compare_items, &CD::compare_keys);
 
-
-
-
-
-
-
-
+   for (int i = 0; i < num_items; i++)
+   {
+	   sorted_cds[i]->displayCD();
+   }
 
    deleteCDs(cds);
    delete cds;
