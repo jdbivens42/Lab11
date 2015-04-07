@@ -31,7 +31,8 @@ int main()
    int num_items = cds->size();
    cout << num_items << endl;
    cout << endl;
-   cin >> pause;
+   cout << "Press enter to continue";
+   cin.get();
    //test the binary search tree
    //insert all of the cds
    ListArrayIterator<CD>* iter = cds->iterator();
@@ -42,6 +43,7 @@ int main()
       bst->insert(cd);
    }
    delete iter;
+   cout << "From Iterator: \n\n";
    BinaryTreeIterator<CD>* biter = bst->iterator();
    biter->setInorder();
    while (biter->hasNext())
@@ -53,6 +55,7 @@ int main()
    }
    //DO THIS
    //test your tree sort method
+   cout << "\n\nFrom TreeSort: \n\n";
    CD** unsorted_cds = cds->toArray();
    CD** sorted_cds = BinarySearchTree<CD>::treeSort(unsorted_cds, num_items, &CD::compare_items, &CD::compare_keys);
 
