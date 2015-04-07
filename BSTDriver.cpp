@@ -48,7 +48,8 @@ int main()
    {
 	   CD* cd = biter->next();
 	   if (cd)
-		cd->displayCD();
+		cd->getKey()->displayString();
+		cout << endl;
    }
    //DO THIS
    //test your tree sort method
@@ -57,8 +58,9 @@ int main()
 
    for (int i = 0; i < num_items; i++)
    {
-	   cout << i << endl;
-	   sorted_cds[i]->displayCD();
+	   //cout << i << endl;
+	   sorted_cds[i]->getKey()->displayString();
+	   cout << endl;
    }
 
    deleteCDs(cds);

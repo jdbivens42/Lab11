@@ -119,7 +119,8 @@ TreeNode<T>* BinarySearchTree<T>::removeNode(TreeNode<T>* tNode)
       //DO THIS
       T* item = findLeftMost(tNode->getRight()); //In order successor item
       tNode->setItem(item);
-	  return removeLeftMost(tNode->getRight()); // Inorder successor removial
+	  tNode->setRight(removeLeftMost(tNode->getRight()));
+	  return tNode;
    }
 }
 
