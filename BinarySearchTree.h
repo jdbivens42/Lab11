@@ -61,17 +61,36 @@ template < class T >
 void BinarySearchTree<T>::remove(String* sk)
 {
    //DO THIS
-
-
-
+	root = removeItem(root, sk);
 }
 
 template < class T >
 TreeNode<T>* BinarySearchTree<T>::removeItem(TreeNode<T>* tNode, String* sk)
 {
    //DO THIS
-
-
+	if (!tNode)
+		return 0;
+	TreeNode<T>* node;
+	int cmp=compare_keys(sk,tnode->getItem());
+	if (!cmp == 0)
+	{
+		if (cmp < 0)
+		{
+			tNode->setLeft(removeItem(tNode->getLeft(), sk));
+			node = tNode;
+		}
+		else
+		{
+			tNode->setRight(removeItem(tNode->getRight(), sk));
+			node = tNode;
+		}
+	}
+	else
+	{
+		node = removeNode(tNode);
+		sze--;
+	}
+	return node;
 
 }
 
