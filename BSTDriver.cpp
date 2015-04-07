@@ -26,11 +26,12 @@ void deleteCDs(ListArray<CD>* list)
 int main()
 {
    //the unsorted ListArray of cds
+	int pause;
    ListArray<CD>* cds = CD::readCDs("cds.txt");
    int num_items = cds->size();
    cout << num_items << endl;
    cout << endl;
-
+   cin >> pause;
    //test the binary search tree
    //insert all of the cds
    ListArrayIterator<CD>* iter = cds->iterator();
@@ -42,10 +43,12 @@ int main()
    }
    delete iter;
    BinaryTreeIterator<CD>* biter = bst->iterator();
+   biter->setInorder();
    while (biter->hasNext())
    {
 	   CD* cd = biter->next();
-	   cd->displayCD();
+	   if (cd)
+		cd->displayCD();
    }
    //DO THIS
    //test your tree sort method
@@ -54,6 +57,7 @@ int main()
 
    for (int i = 0; i < num_items; i++)
    {
+	   cout << i << endl;
 	   sorted_cds[i]->displayCD();
    }
 

@@ -119,10 +119,7 @@ TreeNode<T>* BinarySearchTree<T>::removeNode(TreeNode<T>* tNode)
       //DO THIS
       T* item = findLeftMost(tNode->getRight()); //In order successor item
       tNode->setItem(item);
-	  return removeLeftMost(tNode->getRight());
-
-
-
+	  return removeLeftMost(tNode->getRight()); // Inorder successor removial
    }
 }
 
@@ -152,32 +149,28 @@ TreeNode<T>* BinarySearchTree<T>::removeLeftMost(TreeNode<T>* tNode)
    TreeNode<T>* subtree = removeLeftMost(tNode->getLeft());
    tNode->setLeft(subtree);
    return tNode;
-
-
-
 }
 
 template < class T >
 T** BinarySearchTree<T>::toArray()
 {
    //DO THIS
-   BinaryTreeIterator<T> iter = iterator();
+   BinaryTreeIterator<T>* iter = iterator();
    T** sorted = new T*[sze];
+   iter->setInorder();
    for (int i = 0; iter->hasNext(); i++)
    {
       sorted[i] = iter->next();
    }
    delete iter;
-   
    return sorted;
-
 }
 
 template < class T >
 T** BinarySearchTree<T>::treeSort(T** items, int num_itemss, int (*comp_items) (T* item_1, T* item_2), int (*comp_keys) (String* key, T* item))
 {
    //DO THIS
-   BinarySearchTree<T>* bst = new BinarySearchTree<T>();
+   BinarySearchTree<T>* bst = new BinarySearchTree<T>(comp_items,comp_keys);
    
    for (int i = 0; i < num_itemss; i++)
    {
