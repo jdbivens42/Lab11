@@ -71,7 +71,7 @@ TreeNode<T>* BinarySearchTree<T>::removeItem(TreeNode<T>* tNode, String* sk)
 	if (!tNode)
 		return 0;
 	TreeNode<T>* node;
-	int cmp=compare_keys(sk,tnode->getItem());
+	int cmp=compare_keys(sk,tNode->getItem());
 	if (!cmp == 0)
 	{
 		if (cmp < 0)
@@ -119,7 +119,7 @@ TreeNode<T>* BinarySearchTree<T>::removeNode(TreeNode<T>* tNode)
       //DO THIS
       T* item = findLeftMost(tNode->getRight()); //In order successor item
       tNode->setItem(item);
-	  removeLeftMost(tNode->getRight());
+	  return removeLeftMost(tNode->getRight());
 
 
 
